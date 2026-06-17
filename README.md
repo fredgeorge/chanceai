@@ -20,3 +20,8 @@ in the tests project.
    Avoid using 0.5 as a test value.
 2. Implement not() on a Chance. Test behavior. Use operator
    overloading. Test with and without the operator overloading.
+3. Implement and() on a Chance. Test behavior.
+4. Implement or() on a Chance using DeMorgan's law.
+5. Ensure that Chance is always constructed with a number
+   between 0.0 and 1.0, inclusive.
+6. Add common constants for IMPOSSIBLE and CERTAIN.
