@@ -7,22 +7,22 @@ import org.junit.jupiter.api.Test
 class ChanceTest {
     @Test
     fun `test equality with very close probabilities`() {
-        val c1 = Chance(0.5)
-        val c2 = Chance(0.5 + 1e-10)
+        val c1 = Chance(0.2)
+        val c2 = Chance(0.2 + 1e-10)
         assertEquals(c1, c2)
     }
 
     @Test
     fun `test inequality with distant probabilities`() {
-        val c1 = Chance(0.5)
-        val c2 = Chance(0.6)
+        val c1 = Chance(0.2)
+        val c2 = Chance(0.3)
         assertNotEquals(c1, c2)
     }
 
     @Test
     fun `test hashcode consistency`() {
-        val c1 = Chance(0.5)
-        val c2 = Chance(0.5 + 1e-11)
+        val c1 = Chance(0.7)
+        val c2 = Chance(0.7 + 1e-11)
         assertEquals(c1, c2)
         assertEquals(c1.hashCode(), c2.hashCode())
     }
@@ -38,5 +38,19 @@ class ChanceTest {
         assertEquals(zero1.hashCode(), zero2.hashCode())
         assertEquals(one1, one2)
         assertEquals(one1.hashCode(), one2.hashCode())
+    }
+
+    @Test
+    fun `test not operator`() {
+        val c = Chance(0.3)
+        val notC = !c
+        assertEquals(Chance(0.7), notC)
+    }
+
+    @Test
+    fun `test not function call`() {
+        val c = Chance(0.3)
+        val notC = c.not()
+        assertEquals(Chance(0.7), notC)
     }
 }

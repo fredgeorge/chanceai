@@ -17,4 +17,6 @@ class Chance(private val probability: Double) {
     override fun hashCode(): Int {
         return (probability / EPSILON).roundToLong().hashCode()
     }
+
+    operator fun not(): Chance = Chance(1.0 - probability)
 }

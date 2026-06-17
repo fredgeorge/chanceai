@@ -17,3 +17,6 @@ in the tests project.
    equality works when the probabilities are very, very close.
    If two Chances are equal, the hash codes must be the 
    same. Test with a variety of values, including zero and one.
+   Avoid using 0.5 as a test value.
+2. Implement not() on a Chance. Test behavior. Use operator
+   overloading. Test with and without the operator overloading.
