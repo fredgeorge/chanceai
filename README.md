@@ -13,6 +13,8 @@ in the tests project.
 
 ## Requirements
 
+Use all available skills.
+
 1. Implement equality and hash code for Chance. Ensure that
    equality works when the probabilities are very, very close.
    If two Chances are equal, the hash codes must be the 
