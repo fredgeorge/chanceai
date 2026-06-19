@@ -11,9 +11,17 @@ Create a Chance class and tests. Chance understands the likelihood of something 
 Code should in the engine project. Tests should go 
 in the tests project.
 
-## Requirements
+## Process for AI generation
 
 Use all available skills.
+
+Implement functionality and tests one requirement at a time:
+- Implement a single requirement
+- Generate a test for that requirement
+- Ensure a clean build/test with  "./gradlew clean build test"
+- Move on to next requirement, and repeat these steps.
+
+## Requirements
 
 1. Implement equality and hash code for Chance. Ensure that
    equality works when the probabilities are very, very close.

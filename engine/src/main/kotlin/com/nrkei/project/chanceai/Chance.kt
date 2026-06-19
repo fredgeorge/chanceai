@@ -1,45 +1,30 @@
 package com.nrkei.project.chanceai
 
-import kotlin.math.abs
-import kotlin.math.pow
-import kotlin.math.round
-
-data class Chance(val probability: Double) {
-
-    init {
-        require(probability in 0.0..1.0) { "Probability must be between 0.0 and 1.0, inclusive" }
-    }
-
-    operator fun not(): Chance = Chance(1.0 - probability)
-
-    infix fun and(other: Chance): Chance = Chance(this.probability * other.probability)
-
-    infix fun or(other: Chance): Chance = !(this.not() and other.not())
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is Chance) return false
-        return abs(probability - other.probability) < EPSILON
-    }
-
-    override fun hashCode(): Int {
-        val adjusted = roundToPrecision(PRECISION)
-        return adjusted.hashCode()
-    }
-
+class Chance private constructor(private val fraction: Double) {
     companion object {
         val IMPOSSIBLE = Chance(0.0)
         val CERTAIN = Chance(1.0)
 
-        private const val EPSILON = 1e-9
-        private const val PRECISION = 9
+        val Double.chance get() = Chance(this)
     }
 
-    private fun roundToPrecision(precision: Int): Double {
-        return round(this.probability * kpow(10, precision)) / kpow(10, precision)
+    init {
+        require(fraction in 0.0..1.0) { "Probability must be between 0.0 and 1.0, was $fraction" }
     }
 
-    private fun kpow(base: Int, exp: Int): Double {
-        return base.toDouble().pow(exp.toDouble())
+    infix fun and(other: Chance) = Chance(clamp(fraction * other.fraction))
+
+    operator fun not() = Chance(clamp(1.0 - fraction))
+
+    infix fun or(other: Chance) = !(!this and !other)
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Chance) return false
+        return kotlin.math.abs(fraction - other.fraction) < 1e-15
     }
+
+    override fun hashCode() = fraction.toULong().hashCode()
+
+    private fun clamp(value: Double) = value.coerceIn(0.0, 1.0)
 }
