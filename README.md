@@ -8,8 +8,12 @@ Create a Chance class and **tests**. Chance understands the likelihood of someth
 
 ## Organization
 
-Code should in the engine project. Tests should go 
-in the tests project.
+Code should in the engine project in the existing 
+/Users/fred/src/kotlin/chanceai/engine/src/main/kotlin/com/nrkei/project/chanceai/engine
+directory. Tests should go 
+in the tests project in the existing 
+/Users/fred/src/kotlin/chanceai/tests/src/test/kotlin/com/nrkei/project/chanceai/unit
+directory.
 
 ## Process for AI generation
 
