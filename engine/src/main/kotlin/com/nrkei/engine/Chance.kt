@@ -3,18 +3,18 @@ package com.nrkei.engine
 import kotlin.math.abs
 import kotlin.math.roundToLong
 
-class Chance(fraction: Double) {
+class Chance(number: Number) {
     companion object {
         private const val EPSILON = 1e-9
         val IMPOSSIBLE = Chance(0.0)
         val CERTAIN = Chance(1.0)
     }
 
-    private val fraction: Double = validateFraction(fraction)
+    private val fraction: Double
 
-    private fun validateFraction(value: Double): Double {
-        require(value in 0.0..1.0) { "Probability must be between 0.0 and 1.0" }
-        return value
+    init {
+        fraction = number.toDouble()
+        require(fraction in 0.0..1.0) { "Probability must be between 0.0 and 1.0" }
     }
 
     override fun equals(other: Any?) =

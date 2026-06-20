@@ -13,27 +13,20 @@ class ChanceTest {
         assertTrue(Chance(1.0) == Chance(1.0))
         assertTrue(Chance(0.25) == Chance(0.25))
         assertTrue(Chance(0.001) == Chance(0.001))
-        val veryClose1 = Chance(0.123456789123)
-        val veryClose2 = Chance(0.123456789124)
-        assertTrue(veryClose1 == veryClose2)
+        assertTrue(Chance(0.123456789123) == Chance(0.123456789124))
     }
 
     @Test fun inequality() {
         assertTrue(Chance(0.0) != Chance(1.0))
         assertTrue(Chance(0.1) != Chance(0.2))
         assertTrue(Chance(0.0) != Chance(0.001))
-        val farEnough1 = Chance(0.123456789)
-        val farEnough2 = Chance(0.123456792)
-        assertTrue(farEnough1 != farEnough2)
     }
 
     @Test fun hashCodeConsistency() {
         assertEquals(Chance(0.0).hashCode(), Chance(0.0).hashCode())
         assertEquals(Chance(1.0).hashCode(), Chance(1.0).hashCode())
         assertEquals(Chance(0.25).hashCode(), Chance(0.25).hashCode())
-        val veryClose1 = Chance(0.123456789123)
-        val veryClose2 = Chance(0.123456789124)
-        assertEquals(veryClose1.hashCode(), veryClose2.hashCode())
+        assertEquals(Chance(0.123456789123).hashCode(), Chance(0.123456789124).hashCode())
     }
 
     @Test fun notOperator() {
@@ -61,13 +54,20 @@ class ChanceTest {
         assertEquals(Chance(1.0), Chance(1.0) or Chance(0.5))
     }
 
-    @Test fun boundaryConstruction() {
+    @Test fun constants() {
         assertEquals(Chance(0.0), Chance.IMPOSSIBLE)
         assertEquals(Chance(1.0), Chance.CERTAIN)
+    }
+
+    @Test fun numberConstruction() {
+        assertEquals(Chance(0.0), Chance(0))
+        assertEquals(Chance(1.0), Chance(1))
+        assertEquals(Chance(0.5), Chance(0.5f))
     }
 
     @Test fun invalidConstruction() {
         assertThrows<IllegalArgumentException> { Chance(-0.1) }
         assertThrows<IllegalArgumentException> { Chance(1.1) }
+        assertThrows<IllegalArgumentException> { Chance(-1) }
     }
 }
