@@ -4,7 +4,7 @@ An implementation of the Chance class via AI
 
 ## Purpose
 
-Create a Chance class and tests. Chance understands the likelihood of something occurring.
+Create a Chance class and **tests**. Chance understands the likelihood of something occurring.
 
 ## Organization
 
@@ -14,12 +14,6 @@ in the tests project.
 ## Process for AI generation
 
 Use all available skills.
-
-Implement functionality and tests one requirement at a time:
-- Implement a single requirement
-- Generate a test for that requirement
-- Ensure a clean build/test with  "./gradlew clean build test"
-- Move on to next requirement, and repeat these steps.
 
 ## Requirements
 
