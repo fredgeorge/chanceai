@@ -14,9 +14,6 @@ class ChanceTest {
         assertTrue(Chance(0.25) == Chance(0.25))
         assertTrue(Chance(0.001) == Chance(0.001))
         assertTrue(Chance(0.123456789123) == Chance(0.123456789124))
-    }
-
-    @Test fun inequality() {
         assertTrue(Chance(0.0) != Chance(1.0))
         assertTrue(Chance(0.1) != Chance(0.2))
         assertTrue(Chance(0.0) != Chance(0.001))
@@ -29,14 +26,11 @@ class ChanceTest {
         assertEquals(Chance(0.123456789123).hashCode(), Chance(0.123456789124).hashCode())
     }
 
-    @Test fun notOperator() {
+    @Test fun not() {
         assertEquals(Chance(1.0), !Chance(0.0))
         assertEquals(Chance(0.0), !Chance(1.0))
         assertEquals(Chance(0.6), !Chance(0.4))
         assertEquals(Chance(0.25), !Chance(0.75))
-    }
-
-    @Test fun notExplicitly() {
         assertEquals(Chance(1.0), Chance(0.0).not())
         assertEquals(Chance(0.0), Chance(1.0).not())
     }
@@ -45,7 +39,9 @@ class ChanceTest {
         assertEquals(Chance(0.25), Chance(0.5) and Chance(0.5))
         assertEquals(Chance(0.56), Chance(0.8) and Chance(0.7))
         assertEquals(Chance(0.8), Chance(0.8) and Chance(1.0))
+        assertEquals(Chance(0.7), Chance(1.0) and Chance(0.7))
         assertEquals(Chance(0.0), Chance(0.0) and Chance(0.7))
+        assertEquals(Chance(0.0), Chance(0.0) and Chance(0.0))
     }
 
     @Test fun orUsingOperator() {

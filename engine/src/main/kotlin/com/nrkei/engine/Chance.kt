@@ -3,7 +3,7 @@ package com.nrkei.engine
 import kotlin.math.abs
 import kotlin.math.roundToLong
 
-class Chance(number: Number) {
+class Chance(fraction: Number) {
     companion object {
         private const val EPSILON = 1e-9
         val IMPOSSIBLE = Chance(0.0)
@@ -13,7 +13,7 @@ class Chance(number: Number) {
     private val fraction: Double
 
     init {
-        fraction = number.toDouble()
+        fraction = fraction.toDouble()
         require(fraction in 0.0..1.0) { "Probability must be between 0.0 and 1.0" }
     }
 
