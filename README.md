@@ -32,4 +32,4 @@ Use all available skills.
 4. Implement or() on a Chance using DeMorgan's law.
 5. Ensure that Chance is always constructed with a number
    between 0.0 and 1.0, inclusive.
-6. Add common constants for IMPOSSIBLE and CERTAIN.
+6. Add common constants for IMPOSSIBLE and CERTAIN as Chance objects.
